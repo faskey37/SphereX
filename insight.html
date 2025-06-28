@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Resources | SphereX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Consistent with your existing styles */
+        :root {
+            --primary: #ff4444;
+            --primary-dark: #ff6b35;
+            --secondary: #1e293b;
+            --accent: #00a0e9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Consistent with other pages */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: left;
+            gap: 0px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            transform: scale(2.8);
+            transform-origin: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-btn,
+        .hamburger {
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover,
+        .hamburger:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Insights Page Specific Styles */
+        .insights-hero {
+            background: 
+                linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.9)),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            padding: 200px 0 120px;
+            text-align: center;
+            margin-top: 60px; /* Account for fixed header */
+        }
+
+        .insights-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .insights-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Insights Filter */
+        .insights-filter {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: var(--gray);
+            color: var(--white);
+        }
+
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .insight-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+
+        .insight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .insight-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .insight-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .insight-card:hover .insight-img img {
+            transform: scale(1.05);
+        }
+
+        .insight-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .insight-content {
+            padding: 25px;
+        }
+
+        .insight-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .insight-date i {
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        .insight-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .insight-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .insight-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .insight-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .insight-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid var(--primary);
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .author-info p {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .read-time {
+            font-size: 0.9rem;
+            color: var(--gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .read-time i {
+            margin-right: 5px;
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 68, 68, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* Featured Insights */
+        .featured-insights {
+            background: var(--light);
+        }
+
+        .featured-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .featured-slider::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .featured-slider::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .featured-slider::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .featured-card {
+            min-width: 500px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            scroll-snap-align: start;
+        }
+
+        .featured-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 30px;
+        }
+
+        .featured-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .featured-content h3 {
+            font-size: 1.6rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .newsletter h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 6px 0 0 6px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.3);
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 6px 6px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .resource-content {
+            padding: 30px;
+        }
+
+        .resource-content h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .resource-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-light:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer - Consistent with other pages */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .featured-card {
+                min-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .insights-hero {
+                padding: 160px 0 80px;
+                margin-top: 60px;
+            }
+
+            .insights-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .featured-card {
+                min-width: 300px;
+            }
+
+            .featured-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 6px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-form button {
+                border-radius: 6px;
+                padding: 15px;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="Asset/company_logo-removebg-preview.png" alt="SphereX Logo" class="logo-img">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Digital Transformation</a>
+                            <a href="#">Cloud Services</a>
+                            <a href="#">Data Analytics</a>
+                            <a href="#">AI & ML</a>
+                            <a href="#">Cybersecurity</a>
+                        </div>
+                    </li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="insights.html" class="active">Insights</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Insights Hero Section -->
+    <section class="insights-hero">
+        <div class="container">
+            <h1>Insights & Resources</h1>
+            <p>Expert perspectives, industry trends, and actionable knowledge to drive your digital transformation</p>
+        </div>
+    </section>
+
+    <!-- Featured Insights Section -->
+    <section class="section featured-insights">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Insights</h2>
+                <p>Discover our latest thought leadership and in-depth analysis on emerging technologies</p>
+            </div>
+
+            <div class="featured-slider">
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="AI Trends">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">Artificial Intelligence</span>
+                        <h3>The Future of Enterprise AI: 5 Trends Shaping 2025</h3>
+                        <p>Explore how AI is transforming business operations and what strategies leading organizations are adopting to stay ahead.</p>
+                        <a href="#" class="btn btn-outline">Read Article</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cloud Security">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">Cybersecurity</span>
+                        <h3>Securing Multi-Cloud Environments: Best Practices</h3>
+                        <p>Learn how to navigate the complexities of securing hybrid and multi-cloud infrastructures with our comprehensive guide.</p>
+                        <a href="#" class="btn btn-outline">Read Article</a>
+                    </div>
+                </div>
+
+                <div class="featured-card">
+                    <div class="featured-img">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="IoT">
+                    </div>
+                    <div class="featured-content">
+                        <span class="featured-tag">IoT</span>
+                        <h3>Industrial IoT: Transforming Manufacturing Operations</h3>
+                        <p>Discover how IIoT is driving efficiency, predictive maintenance, and new business models in manufacturing.</p>
+                        <a href="#" class="btn btn-outline">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Insights Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Insights</h2>
+                <p>Stay informed with our collection of articles, whitepapers, and case studies</p>
+            </div>
+
+            <div class="insights-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="articles">Articles</button>
+                <button class="filter-btn" data-filter="whitepapers">Whitepapers</button>
+                <button class="filter-btn" data-filter="case-studies">Case Studies</button>
+                <button class="filter-btn" data-filter="webinars">Webinars</button>
+            </div>
+
+            <div class="insights-grid">
+                <!-- Article 1 -->
+                <div class="insight-card" data-category="articles">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Data Strategy">
+                        <span class="insight-tag">Data Analytics</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> June 15, 2025</div>
+                        <h3>Building a Data-Driven Culture: Key Strategies for Success</h3>
+                        <p>Learn how leading organizations are fostering data literacy and making evidence-based decisions at all levels.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Data Practice Lead</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 8 min read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Whitepaper -->
+                <div class="insight-card" data-category="whitepapers">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cloud Migration">
+                        <span class="insight-tag">Cloud Computing</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> May 28, 2025</div>
+                        <h3>Cloud Migration Roadmap: A Comprehensive Guide</h3>
+                        <p>Our detailed whitepaper covers assessment, planning, and execution strategies for successful cloud adoption.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen">
+                                <div class="author-info">
+                                    <h4>Michael Chen</h4>
+                                    <p>Cloud Architect</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 15 min read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study -->
+                <div class="insight-card" data-category="case-studies">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Banking Transformation">
+                        <span class="insight-tag">Financial Services</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> May 10, 2025</div>
+                        <h3>Digital Transformation in Banking: A Success Story</h3>
+                        <p>How we helped a regional bank achieve 40% operational efficiency gains through digital transformation.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel">
+                                <div class="author-info">
+                                    <h4>Priya Patel</h4>
+                                    <p>Financial Services Lead</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 12 min read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Webinar -->
+                <div class="insight-card" data-category="webinars">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="AI Webinar">
+                        <span class="insight-tag">Artificial Intelligence</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> April 22, 2025</div>
+                        <h3>AI Implementation: Lessons from the Field</h3>
+                        <p>Watch our panel discussion with industry experts sharing practical insights on successful AI adoption.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Wilson">
+                                <div class="author-info">
+                                    <h4>David Wilson</h4>
+                                    <p>AI Practice Lead</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 45 min watch</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article 2 -->
+                <div class="insight-card" data-category="articles">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Leadership">
+                        <span class="insight-tag">Digital Leadership</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> April 15, 2025</div>
+                        <h3>The Evolving Role of CIOs in Digital Transformation</h3>
+                        <p>How technology leaders are transitioning from infrastructure managers to innovation drivers.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Emily Rodriguez">
+                                <div class="author-info">
+                                    <h4>Emily Rodriguez</h4>
+                                    <p>Digital Strategy Lead</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 6 min read</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Whitepaper 2 -->
+                <div class="insight-card" data-category="whitepapers">
+                    <div class="insight-img">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="IoT Security">
+                        <span class="insight-tag">Cybersecurity</span>
+                    </div>
+                    <div class="insight-content">
+                        <div class="insight-date"><i class="far fa-calendar-alt"></i> March 30, 2025</div>
+                        <h3>Securing IoT Ecosystems: Challenges and Solutions</h3>
+                        <p>Our comprehensive guide to protecting connected devices and networks in enterprise environments.</p>
+                        <div class="insight-meta">
+                            <div class="insight-author">
+                                <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Robert Kim">
+                                <div class="author-info">
+                                    <h4>Robert Kim</h4>
+                                    <p>Security Architect</p>
+                                </div>
+                            </div>
+                            <div class="read-time"><i class="far fa-clock"></i> 18 min read</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="btn">View All Insights</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest insights, trends, and updates delivered to your inbox</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Resources</h2>
+                <p>Tools, guides, and frameworks to support your digital transformation journey</p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <div class="resource-icon">
+                            <i class="fas fa-download"></i>
+                        </div>
+                        <h3>Digital Maturity Assessment Tool</h3>
+                        <p>Evaluate your organization's digital capabilities across key dimensions and identify improvement areas.</p>
+                        <a href="#" class="btn btn-outline">Download Now</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Cloud Migration Checklist</h3>
+                        <p>Comprehensive checklist covering all phases of cloud migration from planning to optimization.</p>
+                        <a href="#" class="btn btn-outline">Get the Guide</a>
+                    </div>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-content">
+                        <div class="resource-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>AI Use Case Library</h3>
+                        <p>Collection of proven AI applications across industries to inspire your innovation strategy.</p>
+                        <a href="#" class="btn btn-outline">Explore Library</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Accelerate Your Digital Transformation?</h2>
+            <p>Our experts are ready to discuss your challenges and craft a customized solution for your business.</p>
+            <a href="#contact" class="btn btn-light">Contact Our Team</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SphereX</h3>
+                    <p>Accelerating digital transformation through innovative technology solutions that drive business growth and operational excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Transformation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">AI & ML</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="insights.html">Insights</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@spherex.com">info@spherex.com</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li>123 Tech Park, Nagpur</li>
+                        <li>Maharashtra, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SphereX Technologies. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (would need additional HTML)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('mobile-visible');
+            });
+        }
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const insightCards = document.querySelectorAll('.insight-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Filter cards
+                const filter = btn.getAttribute('data-filter');
+                
+                insightCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

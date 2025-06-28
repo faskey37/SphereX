@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Transformation | SphereX - Future-Ready Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Consistent with About Us and Careers page styles */
+        :root {
+            --primary: #ff4444;
+            --primary-dark: #ff6b35;
+            --primary-light: #ff9999;
+            --secondary: #1e293b;
+            --secondary-light: #334155;
+            --accent: #00a0e9;
+            --accent-dark: #0077b6;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Consistent with other pages */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 18px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-scrolled {
+            padding: 12px 0;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            transform: scale(2.8);
+            transform-origin: left center;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 28px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 240px;
+            box-shadow: var(--shadow-lg);
+            border-radius: var(--border-radius);
+            z-index: 1;
+            padding: 12px 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 24px;
+            display: block;
+            color: var(--dark);
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 68, 68, 0.05);
+            color: var(--primary);
+            padding-left: 28px;
+        }
+
+        .dropdown-content a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-btn,
+        .hamburger {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover,
+        .hamburger:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Digital Transformation Hero Section */
+        .dt-hero {
+            background: 
+                linear-gradient(135deg, rgba(30, 41, 59, 0.92), rgba(30, 41, 59, 0.97)),
+                url('https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+            padding: 220px 0 140px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dt-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 68, 68, 0.15) 0%, transparent 30%);
+            animation: pulse-glow 8s infinite alternate;
+        }
+
+        .dt-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+            animation: fadeInUp 1s ease;
+        }
+
+        .dt-hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .dt-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-cta {
+            margin-top: 40px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        /* Approach Section */
+        .approach-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .approach-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            transition: var(--transition);
+        }
+
+        .approach-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .approach-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 25px;
+            transition: var(--transition);
+        }
+
+        .approach-card:hover .approach-number {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .approach-card h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .approach-card p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solutions-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dimension.png');
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .solutions-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: var(--white);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .solutions-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .solutions-content.active {
+            display: block;
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--primary);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .solution-card h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .solution-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .solution-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .solution-link:hover {
+            gap: 10px;
+        }
+
+        /* Industries Section */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .industry-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .industry-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .industry-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .industry-card:hover .industry-image img {
+            transform: scale(1.1);
+        }
+
+        .industry-info {
+            padding: 25px;
+        }
+
+        .industry-info h3 {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .industry-info p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        /* Case Studies Section */
+        .case-studies-section {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-studies-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .case-studies-slider {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .case-study {
+            min-width: 300px;
+            max-width: 400px;
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            scroll-snap-align: start;
+            transition: var(--transition);
+        }
+
+        .case-study:hover {
+            transform: scale(1.02);
+        }
+
+        .case-study-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .case-study-content {
+            padding: 25px;
+            color: var(--dark);
+        }
+
+        .case-study-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .case-study-content .industry {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .case-study-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/diagonal-striped-brick.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            font-size: 1.3rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(255, 68, 68, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+            transform: translateX(-100%);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 68, 68, 0.6);
+        }
+
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-light:hover {
+            background-color: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer - Consistent with other pages */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 100px 0 40px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-column:hover h3::after {
+            width: 60px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 8px;
+        }
+
+        .footer-links a:hover::after {
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            margin: 0 10px;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary);
+        }
+
+        /* Back to Top Button - Enhanced */
+        .back-to-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: 2px solid white;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes glow-pulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.05); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 0.1; }
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .approach-card {
+                min-width: 250px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .approach-card {
+                min-width: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 90px 0;
+            }
+            
+            .section-title h2,
+            .cta h2 {
+                font-size: 2.3rem;
+            }
+            
+            .dt-hero {
+                padding: 180px 0 100px;
+            }
+
+            .dt-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .approach-card {
+                min-width: 100%;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dt-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .dt-hero p,
+            .cta p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2,
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-column {
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-column:hover h3::after {
+                width: 40px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-links a:hover {
+                padding-left: 0;
+            }
+            
+            .footer-links a:hover::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="Asset/company_logo-removebg-preview.png" alt="SphereX Logo" class="logo-img">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="active">Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#" class="active"><i class="fas fa-digital-tachograph"></i> Digital Transformation</a>
+                            <a href="#"><i class="fas fa-cloud"></i> Cloud Services</a>
+                            <a href="#"><i class="fas fa-chart-bar"></i> Data Analytics</a>
+                            <a href="#"><i class="fas fa-robot"></i> AI & ML</a>
+                            <a href="#"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+                        </div>
+                    </li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="insights.html">Insights</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Digital Transformation Hero Section -->
+    <section class="dt-hero">
+        <div class="container">
+            <h1>Reimagine Your Business for the Digital Age</h1>
+            <p>Transform your operations, customer experiences, and business models with our comprehensive digital transformation solutions</p>
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-light">Start Your Transformation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Digital Transformation Approach</h2>
+                <p>We combine strategy, technology, and execution to deliver measurable business outcomes</p>
+            </div>
+
+            <div class="approach-steps">
+                <div class="approach-card">
+                    <div class="approach-number">1</div>
+                    <h3>Assessment & Strategy</h3>
+                    <p>We analyze your current state, identify opportunities, and develop a tailored digital transformation roadmap aligned with your business goals.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">2</div>
+                    <h3>Technology Architecture</h3>
+                    <p>Our experts design future-proof technology architectures that scale with your business and integrate seamlessly with existing systems.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">3</div>
+                    <h3>Implementation</h3>
+                    <p>We deploy solutions using agile methodologies, ensuring rapid delivery of value while maintaining quality and security standards.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">4</div>
+                    <h3>Change Management</h3>
+                    <p>We help your team adapt to new technologies and processes through comprehensive training and support programs.</p>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-number">5</div>
+                    <h3>Continuous Optimization</h3>
+                    <p>Our ongoing support and optimization services ensure your digital capabilities continue to evolve with changing business needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="section solutions-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Digital Transformation Solutions</h2>
+                <p>Comprehensive solutions tailored to your unique business challenges</p>
+            </div>
+
+            <div class="solutions-tabs">
+                <button class="tab-btn active" data-tab="customer-experience">Customer Experience</button>
+                <button class="tab-btn" data-tab="operational-efficiency">Operational Efficiency</button>
+                <button class="tab-btn" data-tab="business-models">Business Models</button>
+                <button class="tab-btn" data-tab="workforce">Workforce</button>
+            </div>
+
+            <div class="solutions-content active" id="customer-experience">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Omnichannel Engagement</h3>
+                        <p>Create seamless customer experiences across all touchpoints with integrated digital platforms and personalized interactions.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Digital Self-Service</h3>
+                        <p>Empower customers with intuitive self-service portals, mobile apps, and AI-powered chatbots for 24/7 support.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Customer Analytics</h3>
+                        <p>Leverage data insights to understand customer behavior, predict needs, and deliver hyper-personalized experiences.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solutions-content" id="operational-efficiency">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Process Automation</h3>
+                        <p>Streamline operations with intelligent automation, reducing costs and improving accuracy across business processes.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data-Driven Operations</h3>
+                        <p>Transform decision-making with real-time operational data and predictive analytics for continuous improvement.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Supply Chain Digitization</h3>
+                        <p>Enhance visibility, agility, and resilience across your supply chain with digital tracking and collaboration tools.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solutions-content" id="business-models">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Digital Product Innovation</h3>
+                        <p>Develop new digital products and services that create additional revenue streams and competitive advantages.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-subscript"></i>
+                        </div>
+                        <h3>Subscription & SaaS Models</h3>
+                        <p>Transition to recurring revenue models with platforms that enable subscription management and usage-based billing.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-people-arrows"></i>
+                        </div>
+                        <h3>Platform Ecosystems</h3>
+                        <p>Create digital platforms that connect partners, suppliers, and customers in value-creating ecosystems.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solutions-content" id="workforce">
+                <div class="solution-grid">
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-laptop-house"></i>
+                        </div>
+                        <h3>Digital Workplace</h3>
+                        <p>Equip your workforce with modern collaboration tools, secure remote access, and digital productivity solutions.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Upskilling Programs</h3>
+                        <p>Develop digital capabilities across your organization with tailored training and continuous learning platforms.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>AI-Augmented Workforce</h3>
+                        <p>Enhance employee productivity and decision-making with AI-powered tools and intelligent assistants.</p>
+                        <a href="#" class="solution-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Industry-Specific Transformations</h2>
+                <p>Tailored digital solutions for your industry's unique challenges and opportunities</p>
+            </div>
+
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Manufacturing">
+                    </div>
+                    <div class="industry-info">
+                        <h3>Manufacturing</h3>
+                        <p>Smart factories, IoT-enabled equipment, and predictive maintenance for Industry 4.0 transformation.</p>
+                        <a href="#" class="solution-link">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Financial Services">
+                    </div>
+                    <div class="industry-info">
+                        <h3>Financial Services</h3>
+                        <p>Digital banking, AI-driven risk assessment, and blockchain solutions for the financial sector.</p>
+                        <a href="#" class="solution-link">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Healthcare">
+                    </div>
+                    <div class="industry-info">
+                        <h3>Healthcare</h3>
+                        <p>Telemedicine platforms, EHR systems, and AI diagnostics for modern healthcare delivery.</p>
+                        <a href="#" class="solution-link">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-image">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Retail">
+                    </div>
+                    <div class="industry-info">
+                        <h3>Retail</h3>
+                        <p>Omnichannel commerce, personalized recommendations, and inventory optimization solutions.</p>
+                        <a href="#" class="solution-link">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="section case-studies-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Transformation Success Stories</h2>
+                <p>See how we've helped businesses achieve remarkable results through digital transformation</p>
+            </div>
+
+            <div class="case-studies-slider">
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Financial Services Transformation">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry">Financial Services</span>
+                        <h3>Digital Banking Platform</h3>
+                        <p>Transformed a traditional bank into a digital-first institution with a 40% increase in customer acquisition and 60% reduction in operational costs.</p>
+                        <a href="#" class="solution-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Healthcare Transformation">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry">Healthcare</span>
+                        <h3>Hospital System Modernization</h3>
+                        <p>Implemented a unified digital health platform reducing patient wait times by 35% and improving clinical outcomes by 25%.</p>
+                        <a href="#" class="solution-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Manufacturing Transformation">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry">Manufacturing</span>
+                        <h3>Smart Factory Implementation</h3>
+                        <p>Connected legacy manufacturing equipment with IoT sensors, achieving 30% productivity gains and 20% reduction in downtime.</p>
+                        <a href="#" class="solution-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="case-study">
+                    <div class="case-study-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Retail Transformation">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="industry">Retail</span>
+                        <h3>Omnichannel Retail Experience</h3>
+                        <p>Created a seamless customer journey across online and physical stores, increasing sales by 45% and customer satisfaction by 60%.</p>
+                        <a href="#" class="solution-link">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Begin Your Digital Transformation?</h2>
+            <p>Our experts will guide you through every step of your journey to becoming a digitally empowered organization.</p>
+            <a href="#contact" class="btn btn-light">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SphereX</h3>
+                    <p>Accelerating digital transformation through innovative technology solutions that drive business growth and operational excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="active">Digital Transformation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">AI & ML</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@spherex.com">info@spherex.com</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li>123 Tech Park, Nagpur</li>
+                        <li>Maharashtra, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SphereX Technologies. All Rights Reserved.</p>
+                <p>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a> | 
+                    <a href="#">Cookie Policy</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('mobile-visible');
+            });
+        }
+
+        // Solutions tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const solutionsContents = document.querySelectorAll('.solutions-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active'));
+                solutionsContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.approach-card, .solution-card, .industry-card, .case-study');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.approach-card, .solution-card, .industry-card, .case-study').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+
+        // Run animation check on scroll and load
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

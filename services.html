@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | SphereX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Consistent with your existing styles */
+        :root {
+            --primary: #ff4444;
+            --primary-dark: #ff6b35;
+            --secondary: #1e293b;
+            --accent: #00a0e9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Consistent with other pages */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: left;
+            gap: 0px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            transform: scale(2.8);
+            transform-origin: left center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow);
+            border-radius: 4px;
+            z-index: 1;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light-gray);
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-btn,
+        .hamburger {
+            color: var(--dark);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-btn:hover,
+        .hamburger:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Services Page Specific Styles */
+        .services-hero {
+            background: 
+                linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.9)),
+                url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            padding: 200px 0 120px;
+            text-align: center;
+            margin-top: 60px; /* Account for fixed header */
+        }
+
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Services Tabs */
+        .services-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: var(--light-gray);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: var(--gray);
+            color: var(--white);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .service-features {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .service-features li {
+            margin-bottom: 10px;
+            color: var(--gray);
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* Approach Section */
+        .approach-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .approach-steps::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            flex-grow: 1;
+        }
+
+        .step-content h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 68, 68, 0.5);
+        }
+
+        .btn-light {
+            background-color: var(--white);
+            color: var(--primary);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-light:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Footer - Consistent with other pages */
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-geometric.png');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .services-hero {
+                padding: 160px 0 80px;
+                margin-top: 60px;
+            }
+
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .approach-steps::before {
+                left: 25px;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="Asset/company_logo-removebg-preview.png" alt="SphereX Logo" class="logo-img">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Digital Transformation</a>
+                            <a href="#">Cloud Services</a>
+                            <a href="#">Data Analytics</a>
+                            <a href="#">AI & ML</a>
+                            <a href="#">Cybersecurity</a>
+                        </div>
+                    </li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Insights</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="hamburger">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Comprehensive Technology Services</h1>
+            <p>End-to-end digital solutions designed to transform your business operations and drive growth</p>
+        </div>
+    </section>
+
+    <!-- Services Tabs Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Service Offerings</h2>
+                <p>Specialized solutions tailored to meet your unique business challenges and objectives</p>
+            </div>
+
+            <div class="services-tabs">
+                <button class="tab-btn active" data-tab="consulting">Consulting</button>
+                <button class="tab-btn" data-tab="technology">Technology</button>
+                <button class="tab-btn" data-tab="managed">Managed Services</button>
+                <button class="tab-btn" data-tab="training">Training</button>
+            </div>
+
+            <!-- Consulting Services -->
+            <div id="consulting" class="tab-content active">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Digital Strategy">
+                        </div>
+                        <div class="service-content">
+                            <h3>Digital Strategy Consulting</h3>
+                            <p>Comprehensive roadmap development for your digital transformation journey aligned with business goals.</p>
+                            <ul class="service-features">
+                                <li>Market and competitor analysis</li>
+                                <li>Technology assessment</li>
+                                <li>ROI-driven implementation plan</li>
+                                <li>Change management strategy</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cloud Consulting">
+                        </div>
+                        <div class="service-content">
+                            <h3>Cloud Migration Consulting</h3>
+                            <p>Expert guidance for seamless transition to cloud infrastructure with optimal architecture design.</p>
+                            <ul class="service-features">
+                                <li>Workload assessment</li>
+                                <li>Cost-benefit analysis</li>
+                                <li>Multi-cloud strategy</li>
+                                <li>Security and compliance review</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Data Consulting">
+                        </div>
+                        <div class="service-content">
+                            <h3>Data Strategy Consulting</h3>
+                            <p>Transform raw data into actionable insights with our comprehensive data strategy framework.</p>
+                            <ul class="service-features">
+                                <li>Data maturity assessment</li>
+                                <li>Governance framework</li>
+                                <li>Analytics roadmap</li>
+                                <li>AI implementation strategy</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Services -->
+            <div id="technology" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Custom Development">
+                        </div>
+                        <div class="service-content">
+                            <h3>Custom Software Development</h3>
+                            <p>Tailored applications built to your exact specifications with agile development methodology.</p>
+                            <ul class="service-features">
+                                <li>Web and mobile applications</li>
+                                <li>Microservices architecture</li>
+                                <li>CI/CD pipeline setup</li>
+                                <li>Quality assurance</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="AI Solutions">
+                        </div>
+                        <div class="service-content">
+                            <h3>AI & Machine Learning Solutions</h3>
+                            <p>Intelligent systems that learn and adapt to drive automation and enhance decision-making.</p>
+                            <ul class="service-features">
+                                <li>Predictive analytics</li>
+                                <li>Computer vision</li>
+                                <li>Natural language processing</li>
+                                <li>Recommendation engines</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="IoT Solutions">
+                        </div>
+                        <div class="service-content">
+                            <h3>IoT Solutions</h3>
+                            <p>End-to-end IoT implementations connecting devices, data, and business processes.</p>
+                            <ul class="service-features">
+                                <li>Sensor networks</li>
+                                <li>Edge computing</li>
+                                <li>Real-time monitoring</li>
+                                <li>Predictive maintenance</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Managed Services -->
+            <div id="managed" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Cloud Management">
+                        </div>
+                        <div class="service-content">
+                            <h3>Cloud Management Services</h3>
+                            <p>Comprehensive management of your cloud infrastructure with 24/7 monitoring and optimization.</p>
+                            <ul class="service-features">
+                                <li>Performance monitoring</li>
+                                <li>Cost optimization</li>
+                                <li>Security patching</li>
+                                <li>Disaster recovery</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1560732488-6b0df240254a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Security Services">
+                        </div>
+                        <div class="service-content">
+                            <h3>Managed Security Services</h3>
+                            <p>Proactive protection against evolving cyber threats with our comprehensive security operations.</p>
+                            <ul class="service-features">
+                                <li>Threat detection</li>
+                                <li>Vulnerability management</li>
+                                <li>Incident response</li>
+                                <li>Compliance monitoring</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Data Management">
+                        </div>
+                        <div class="service-content">
+                            <h3>Managed Data Services</h3>
+                            <p>End-to-end data management including warehousing, analytics, and business intelligence.</p>
+                            <ul class="service-features">
+                                <li>Data pipeline management</li>
+                                <li>ETL processes</li>
+                                <li>Dashboard development</li>
+                                <li>Performance tuning</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Training Services -->
+            <div id="training" class="tab-content">
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1524179091875-bf99a9a6af57?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Technical Training">
+                        </div>
+                        <div class="service-content">
+                            <h3>Technical Training Programs</h3>
+                            <p>Customized training to upskill your team on the latest technologies and methodologies.</p>
+                            <ul class="service-features">
+                                <li>Cloud technologies</li>
+                                <li>DevOps practices</li>
+                                <li>Data science</li>
+                                <li>Agile development</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Leadership Training">
+                        </div>
+                        <div class="service-content">
+                            <h3>Digital Leadership Training</h3>
+                            <p>Executive education programs to lead digital transformation initiatives effectively.</p>
+                            <ul class="service-features">
+                                <li>Digital strategy</li>
+                                <li>Change management</li>
+                                <li>Innovation frameworks</li>
+                                <li>Technology trends</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Certification">
+                        </div>
+                        <div class="service-content">
+                            <h3>Certification Programs</h3>
+                            <p>Industry-recognized certification courses to validate your team's expertise.</p>
+                            <ul class="service-features">
+                                <li>Cloud architect</li>
+                                <li>Data engineer</li>
+                                <li>AI specialist</li>
+                                <li>Cybersecurity analyst</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach Section -->
+    <section class="section" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Proven Methodology</h2>
+                <p>A structured approach to delivering measurable results and sustainable transformation</p>
+            </div>
+
+            <div class="approach-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Discovery & Assessment</h3>
+                        <p>Comprehensive analysis of your current state, challenges, and opportunities through workshops, interviews, and data collection.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Solution Design</h3>
+                        <p>Architecting tailored solutions with detailed technical specifications, implementation roadmaps, and success metrics.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Implementation</h3>
+                        <p>Agile development and deployment with continuous integration, testing, and stakeholder feedback loops.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Optimization</h3>
+                        <p>Performance tuning, user adoption programs, and continuous improvement based on analytics and feedback.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Sustained Success</h3>
+                        <p>Ongoing support, managed services, and periodic reviews to ensure long-term value realization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Our technology experts are ready to discuss your specific needs and craft a customized solution.</p>
+            <a href="#contact" class="btn btn-light">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SphereX</h3>
+                    <p>Accelerating digital transformation through innovative technology solutions that drive business growth and operational excellence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Solutions</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital Transformation</a></li>
+                        <li><a href="#">Cloud Services</a></li>
+                        <li><a href="#">Data Analytics</a></li>
+                        <li><a href="#">AI & ML</a></li>
+                        <li><a href="#">Cybersecurity</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="industries.html">Industries</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:info@spherex.com">info@spherex.com</a></li>
+                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li>123 Tech Park, Nagpur</li>
+                        <li>Maharashtra, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SphereX Technologies. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (would need additional HTML)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('mobile-visible');
+            });
+        }
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
