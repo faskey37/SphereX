@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries We Serve | SphereX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Consistent with your existing styles */
+        :root {
+            --primary: #ff4444;
+            --primary-dark: #ff6b35;
+            --secondary: #1e293b;
+            --accent: #00a0e9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Industries Page Specific Styles */
+        .industries-hero {
+            background: 
+                linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.9)),
+                url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .sector-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .sector-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .sector-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin: 30px 0 20px;
+        }
+
+        .sector-card h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            padding: 0 20px;
+        }
+
+        .sector-card p {
+            color: var(--gray);
+            padding: 0 20px 25px;
+            font-size: 0.95rem;
+        }
+
+        .sector-card .btn {
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        /* Industry Spotlight Section */
+        .industry-spotlight {
+            background-color: var(--light);
+            padding: 100px 0;
+        }
+
+        .spotlight-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .spotlight-content {
+            padding: 40px;
+        }
+
+        .spotlight-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        .spotlight-image {
+            position: relative;
+            min-height: 400px;
+        }
+
+        .spotlight-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        .industry-testimonial {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 80px 40px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .industry-testimonial::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.05);
+            font-family: Georgia, serif;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .spotlight-card {
+                grid-template-columns: 1fr;
+            }
+            .spotlight-image {
+                order: -1;
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Industries Hero Section -->
+    <section class="industries-hero">
+        <div class="container">
+            <h1>Industry-Specific Digital Solutions</h1>
+            <p>Tailored technology transformations for your sector's unique challenges</p>
+        </div>
+    </section>
+
+    <!-- Main Industries Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sectors We Transform</h2>
+                <p>We deliver specialized solutions designed for your industry's regulatory, operational, and competitive landscape</p>
+            </div>
+
+            <div class="sectors-grid">
+                <!-- Financial Services -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Financial Services</h3>
+                    <p>Regulatory-compliant solutions for banks, insurance, and fintech with real-time analytics and fraud prevention.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+
+                <!-- Healthcare -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Healthcare</h3>
+                    <p>HIPAA-compliant systems for patient data management, telemedicine, and medical IoT integration.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Manufacturing</h3>
+                    <p>Industry 4.0 solutions with predictive maintenance, supply chain AI, and smart factory systems.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+
+                <!-- Retail -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Retail & E-Commerce</h3>
+                    <p>Omnichannel platforms with personalized recommendations and inventory optimization.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+
+                <!-- Education -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education</h3>
+                    <p>Next-gen learning platforms with adaptive learning algorithms and virtual classroom tech.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+
+                <!-- Government -->
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>Government</h3>
+                    <p>Secure citizen services with blockchain-based identity verification and document management.</p>
+                    <a href="#" class="btn">Explore Solutions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Spotlight -->
+    <section class="industry-spotlight section-bg">
+        <div class="container">
+            <div class="spotlight-card">
+                <div class="spotlight-content">
+                    <span class="spotlight-tag">Case Study</span>
+                    <h2>Revolutionizing Healthcare with AI Diagnostics</h2>
+                    <p>How we helped MediCare Systems reduce diagnostic errors by 40% through our proprietary AI imaging analysis platform, while maintaining full HIPAA compliance and achieving 99.9% system uptime.</p>
+                    <ul style="margin: 20px 0; padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Reduced patient wait times by 35%</li>
+                        <li style="margin-bottom: 10px;">Integrated with 12 major EMR systems</li>
+                        <li style="margin-bottom: 10px;">Achieved 98% clinician adoption rate</li>
+                    </ul>
+                    <a href="#" class="btn">Read Full Case Study</a>
+                </div>
+                <div class="spotlight-image">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Healthcare AI Diagnostics">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Testimonial -->
+    <section class="section">
+        <div class="container">
+            <div class="industry-testimonial">
+                <blockquote style="font-style: italic; font-size: 1.2rem; margin-bottom: 30px; position: relative; z-index: 1;">
+                    "SphereX's manufacturing IoT platform transformed our production lines, giving us real-time visibility that reduced equipment downtime by 60%. Their deep understanding of industrial operations sets them apart from generic tech providers."
+                </blockquote>
+                <div style="display: flex; align-items: center; position: relative; z-index: 1;">
+                    <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="John Peterson" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--primary); margin-right: 15px;">
+                    <div>
+                        <h4 style="color: white; margin-bottom: 5px;">John Peterson</h4>
+                        <p style="color: rgba(255,255,255,0.8);">COO, Titan Manufacturing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Don't See Your Industry Listed?</h2>
+            <p>Our adaptable solutions can be customized for any sector. Let's discuss your unique requirements.</p>
+            <a href="#contact" class="btn btn-light">Request Consultation</a>
+        </div>
+    </section>
+</body>
+</html>
