@@ -1997,7 +1997,39 @@ background-size: 20px 20px;
             });
         }
 
-        
+        <script type="module">
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { app } from './firebase-init.js'; // Adjust the path to your Firebase init file
+
+  const db = getFirestore(app);
+  const form = document.querySelector(".contact-form");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const subject = form.subject.value.trim();
+    const message = form.message.value.trim();
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        name,
+        email,
+        subject,
+        message,
+        createdAt: serverTimestamp()
+      });
+
+      alert("✅ Message sent successfully!");
+      form.reset();
+    } catch (err) {
+      console.error("Error saving message: ", err);
+      alert("❌ Failed to send message.");
+    }
+  });
+</script>
+
     </script>
     <!-- Firebase App (required) -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
@@ -2006,6 +2038,7 @@ background-size: 20px 20px;
 <!-- Example: Auth -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
 <script src="firebase-init.js"></script>
+<script src="contact.js"></script>
 </body>
 
 </html>
